@@ -9,8 +9,8 @@
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 		    <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/caju" />
-		    <property name="javax.persistence.jdbc.user" value="postgres" />
-		    <property name="javax.persistence.jdbc.password" value="ifpb" />
+		    <property name="javax.persistence.jdbc.user" value="postgres" /><!-- postgress -->
+		    <property name="javax.persistence.jdbc.password" value="jozias123" /><!-- ifpb -->
 		    
 		    <property name="eclipselink.ddl-generation" value="create-tables" />
 		    <property name="eclipselink.ddl-generation.output-mode" value="database"/>
