@@ -13,7 +13,6 @@ public class Colegiado {
 	private int id;
 	private Date dataIni;
 	private Date dataFim;
-
 	private boolean ativo;
 
 	public Colegiado() {

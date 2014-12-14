@@ -8,9 +8,9 @@ import br.edu.ifpb.caju.model.Colegiado;
 public interface SistemaColegiadoInterface {
 	public void cadastraColegiado(Date dataIni, Date dataFim, boolean ativo);
 
-	public void removeModelo(Colegiado colegiado);
+	public void removeColegiado(Colegiado colegiado);
 
-	public void editaModelo(Colegiado colegiado);
+	public void editaColegiado(Colegiado colegiado);
 
 	public List<Colegiado> getAllColegiado();
 

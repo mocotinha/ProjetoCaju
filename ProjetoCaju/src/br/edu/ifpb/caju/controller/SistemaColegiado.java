@@ -27,7 +27,7 @@ public class SistemaColegiado implements SistemaColegiadoInterface {
 	}
 
 	@Override
-	public void removeModelo(Colegiado colegiado) {
+	public void removeColegiado(Colegiado colegiado) {
 		DAOColegiado dao = new DAOColegiado();
 		DAO.open();
 		DAO.begin();
@@ -41,7 +41,7 @@ public class SistemaColegiado implements SistemaColegiadoInterface {
 	}
 
 	@Override
-	public void editaModelo(Colegiado colegiado) {
+	public void editaColegiado(Colegiado colegiado) {
 		DAOColegiado dao = new DAOColegiado();
 		DAO.open();
 		DAO.begin();
