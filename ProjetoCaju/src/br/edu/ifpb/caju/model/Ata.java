@@ -10,21 +10,21 @@ public class Ata {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private long texto;
+	private String texto;
 	
 	public Ata(){
 		
 	}
 	
-	public Ata(Long texto){
+	public Ata(String texto){
 		this.texto = texto;
 	}
 	
 	
-	public long getTexto() {
+	public String getTexto() {
 		return texto;
 	}
-	public void setTexto(long texto) {
+	public void setTexto(String texto) {
 		this.texto = texto;
 	}
 	

@@ -9,7 +9,7 @@ import br.edu.ifpb.caju.model.Ata;
 public class SistemaAta implements SistemaAtaInterface {
 
 	@Override
-	public void cadastraAta(Long text) {
+	public void cadastraAta(String text) {
 		Ata ata = new Ata();
 		ata.setTexto(text);
 		DAOAta dao = new DAOAta();

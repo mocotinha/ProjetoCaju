@@ -39,6 +39,10 @@ public class AtaTableModel extends AbstractTableModel {
 		return "";  
 	}
 
+	public Ata get(int row) {
+		return ata.get(row);
+	}
+
 	
 
 }

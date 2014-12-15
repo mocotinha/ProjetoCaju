@@ -5,7 +5,7 @@ import java.util.List;
 import br.edu.ifpb.caju.model.Ata;
 
 public interface SistemaAtaInterface {
-	public void cadastraAta(Long text);
+	public void cadastraAta(String text);
 
 	public void removeAta(Ata ata);
 

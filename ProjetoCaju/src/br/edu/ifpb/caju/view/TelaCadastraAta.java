@@ -103,7 +103,7 @@ public class TelaCadastraAta extends JDialog{
 		public void actionPerformed(ActionEvent e) {
 			try{
 				SistemaAta sys = new SistemaAta(); //verificar tipos
-				ata.setTexto((Long) null);//corrigir
+				ata.setTexto(null);//corrigir
 				sys.editaAta(ata);
 				JOptionPane.showMessageDialog(classe(), "Ata Atualizada com Sucesso!");
 				dispose();
