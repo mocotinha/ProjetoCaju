@@ -3,7 +3,6 @@ package br.edu.ifpb.caju.view;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -12,37 +11,40 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import br.edu.ifpb.caju.controller.SistemaColegiado;
+import br.edu.ifpb.caju.model.table.ColegiadoTableModel;
 
-import br.edu.ifpb.caju.controller.SistemaModelo;
-import br.edu.ifpb.caju.model.table.ModeloTableModel;
+
 
 @SuppressWarnings("serial")
-public class TelaListaModelo extends JDialog {
+public class TelaListaColegiado extends JDialog{
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
 	private JTable table;
-	private SistemaModelo sys = new SistemaModelo();
+	private SistemaColegiado sys = new SistemaColegiado();
 	private TelaMenu tela;
-
+	
 	/**
 	 * Launch the application.
-	 */
+	 **/
+	
 	public static void main(String[] args) {
 		try {
-			TelaListaModelo dialog = new TelaListaModelo(null);
+			TelaListaColegiado dialog = new TelaListaColegiado(null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 	/**
 	 * Create the dialog.
-	 */
-	public TelaListaModelo(TelaMenu tela) {
-		super(tela,"Lista Modelos",true);
+	 **/
+	
+	public TelaListaColegiado(TelaMenu tela) {
+		super(tela,"Lista Colegiados",true);
 		this.tela = tela;
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -69,7 +71,7 @@ public class TelaListaModelo extends JDialog {
 		scrollPane.setBounds(20, 50, 408, 162);
 		contentPanel.add(scrollPane);
 		
-		table = new JTable(new ModeloTableModel(sys.getAllModelos()));
+		table = new JTable(new ColegiadoTableModel(sys.getAllColegiado()));
 		scrollPane.setViewportView(table);
 		
 		JButton btnEditar = new JButton("Editar");
@@ -84,13 +86,11 @@ public class TelaListaModelo extends JDialog {
 		
 	}
 	
-
-	
 	private class BuscarListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			table.setModel(new ModeloTableModel(sys.getModeloPorAtributo(textField.getText())));
+//			table.setModel(new ColegiadoTableModel(sys.getColegiadoPorAtributo(textField.getText())));
 			
 		}
 		
@@ -100,9 +100,9 @@ public class TelaListaModelo extends JDialog {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			TelaCadastraModelo tcm = new TelaCadastraModelo(tela,((ModeloTableModel)table.getModel()).get(table.getSelectedRow()));
-			tcm.setVisible(true);
-			table.setModel(new ModeloTableModel(sys.getAllModelos()));
+			TelaCadastraColegiado tcc = new TelaCadastraColegiado(tela,((ColegiadoTableModel)table.getModel()).get(table.getSelectedRow()));
+			tcc.setVisible(true);
+			table.setModel(new ColegiadoTableModel(sys.getAllColegiado()));
 			
 		}
 		
@@ -117,4 +117,6 @@ public class TelaListaModelo extends JDialog {
 		}
 		
 	}
+	
+	
 }
