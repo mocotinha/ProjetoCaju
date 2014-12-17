@@ -26,8 +26,8 @@ public class ApplicationReuniao {
 		DAO.open();
 		DAO.begin();
 		
-		/*Cadastro de Reunião
-		 * Reuniao r = new Reuniao();
+//		Cadastro de Reunião
+		 Reuniao r = new Reuniao();
 		
 		//Componentes da Reunião
 		Ata a = new Ata();
@@ -52,7 +52,7 @@ public class ApplicationReuniao {
 		r.addProcesso(p);
 		daoP.persist(p);
 		
-		dao.persist(r);*/
+		dao.persist(r);
 		
 		
 		

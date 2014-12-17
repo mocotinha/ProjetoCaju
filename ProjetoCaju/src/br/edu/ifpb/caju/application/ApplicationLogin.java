@@ -2,7 +2,6 @@ package br.edu.ifpb.caju.application;
 
 import br.edu.ifpb.caju.controller.SistemaMembro;
 import br.edu.ifpb.caju.dao.DAO;
-import br.edu.ifpb.caju.dao.DAOPresidente;
 import br.edu.ifpb.caju.model.Presidente;
 /*
  * Apllication 1 - Cadastro e Login de Presidente de Colegiado
