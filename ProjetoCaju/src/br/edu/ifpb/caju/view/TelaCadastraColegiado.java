@@ -12,36 +12,41 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import br.edu.ifpb.caju.controller.SistemaModelo;
-import br.edu.ifpb.caju.model.Modelo;
+import br.edu.ifpb.caju.controller.SistemaColegiado;
+import br.edu.ifpb.caju.model.Colegiado;
+
+
 
 @SuppressWarnings("serial")
-public class TelaCadastraModelo extends JDialog {
-
+public class TelaCadastraColegiado extends JDialog{
+	
 	private final JPanel contentPanel = new JPanel();
-	private JTextField atributo;
-	private Modelo modelo;
-
+	private JTextField dataIni;
+	private JTextField dataFim;
+	private JTextField ativo;
+	private Colegiado colegiado;
+	
 	/**
 	 * Launch the application.
-	 */
+	 **/
+	
 	public static void main(String[] args) {
 		try {
-			TelaCadastraModelo dialog = new TelaCadastraModelo(null);
+			TelaCadastraColegiado dialog = new TelaCadastraColegiado(null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 	/**
 	 * Create the dialog.
-	 */
+	 **/
 	
-	public TelaCadastraModelo(TelaMenu tela,Modelo modelo){
-		super(tela,"Cadastro de Modelo",true);
-		this.modelo = modelo;
+	public TelaCadastraColegiado(TelaMenu tela,Colegiado colegiado){//verificar tipos
+		super(tela,"Cadastro de Colegiado",true);
+		this.colegiado = colegiado;
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 434, 262);
@@ -49,15 +54,17 @@ public class TelaCadastraModelo extends JDialog {
 		getContentPane().add(contentPanel);
 		contentPanel.setLayout(null);
 		
-		JLabel lblAtributo = new JLabel("Atributo:");
-		lblAtributo.setBounds(32, 33, 71, 14);
-		contentPanel.add(lblAtributo);
+		//Falta ver os outros atributos
+		//--
+		JLabel lbldataIni = new JLabel("DataIni:");
+		lbldataIni.setBounds(32, 33, 71, 14);
+		contentPanel.add(lbldataIni);
 		
-		atributo = new JTextField(this.modelo.getAtributo());
-		atributo.setBounds(91, 30, 257, 20);
-		contentPanel.add(atributo);
-		atributo.setColumns(10);
-		
+		dataIni = new JTextField();//this.colegiado.getDataIni()
+		dataIni.setBounds(91, 30, 257, 20);
+		contentPanel.add(dataIni);
+		dataIni.setColumns(10);
+		//---
 		JButton btnCadastrar = new JButton("Atualizar");
 		btnCadastrar.setBounds(24, 225, 98, 26);
 		btnCadastrar.addActionListener(new AtualizarListener());
@@ -69,9 +76,8 @@ public class TelaCadastraModelo extends JDialog {
 		contentPanel.add(btnConcluir);
 	}
 	
-	
-	public TelaCadastraModelo(JFrame tela) {
-		super(tela,"Cadastro de Modelo",true);
+	public TelaCadastraColegiado(JFrame tela) { //verificar tipos
+		super(tela,"Cadastro de Colegiado",true);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 434, 262);
@@ -79,14 +85,16 @@ public class TelaCadastraModelo extends JDialog {
 		getContentPane().add(contentPanel);
 		contentPanel.setLayout(null);
 		
-		JLabel lblAtributo = new JLabel("Atributo:");
-		lblAtributo.setBounds(32, 33, 71, 14);
-		contentPanel.add(lblAtributo);
+		//Falta ver os outros atributos
 		
-		atributo = new JTextField();
-		atributo.setBounds(91, 30, 257, 20);
-		contentPanel.add(atributo);
-		atributo.setColumns(10);
+		JLabel lbldataIni = new JLabel("DataIni:");
+		lbldataIni.setBounds(32, 33, 71, 14);
+		contentPanel.add(lbldataIni);
+		
+		dataIni = new JTextField();//this.colegiado.getDataIni()
+		dataIni.setBounds(91, 30, 257, 20);
+		contentPanel.add(dataIni);
+		dataIni.setColumns(10);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.setBounds(24, 225, 98, 26);
@@ -100,7 +108,7 @@ public class TelaCadastraModelo extends JDialog {
 		
 	}
 	
-	private TelaCadastraModelo classe(){
+	public TelaCadastraColegiado classe() {
 		return this;
 	}
 	
@@ -109,37 +117,38 @@ public class TelaCadastraModelo extends JDialog {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try{
-				SistemaModelo sys = new SistemaModelo();
-				modelo.setAtributo(atributo.getText());
-				sys.editaModelo(modelo);
-				JOptionPane.showMessageDialog(classe(), "Modelo Atualizado com Sucesso!");
+				SistemaColegiado sys = new SistemaColegiado(); //verificar tipos
+			/*	colegiado.setDataIni(dataIni.getText());
+				colegiado.setDataFim(dataFim.getText());
+				colegiado.setAtivo(ativo.getText());*/
+				sys.editaColegiado(colegiado);
+				JOptionPane.showMessageDialog(classe(), "Colegiado Atualizado com Sucesso!");
 				dispose();
 			}catch(Exception ex){
-				JOptionPane.showMessageDialog(classe(), "Erro ao Atualizar o Modelo!");
+				JOptionPane.showMessageDialog(classe(), "Erro ao Atualizar o Colegiado!");
 			}
 			
 		}
 		
 	}
 	
-	private class CadastrarListener implements ActionListener{
+	private class CadastrarListener implements ActionListener{//verificar tipos.
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try{
-				SistemaModelo sys = new SistemaModelo();
-				sys.cadastraModelo(atributo.getText());
-				JOptionPane.showMessageDialog(classe(), "Modelo Cadastrado com Sucesso!");
+				SistemaColegiado sys = new SistemaColegiado();
+//				sys.cadastraColegiado(dataIni.getText(),dataFim.getText(),ativo.getText());
+				JOptionPane.showMessageDialog(classe(), "Colegiado Cadastrado com Sucesso!");
 				dispose();
 			}catch(Exception ex){
-				JOptionPane.showMessageDialog(classe(), "Erro ao cadastrar o Modelo!");
+				JOptionPane.showMessageDialog(classe(), "Erro ao cadastrar o Colegiado!");
 			}
 			
 			
 		}
 		
 	}
-	
 	private class ConcluidoListener implements ActionListener{
 
 		@Override
@@ -148,4 +157,8 @@ public class TelaCadastraModelo extends JDialog {
 		}
 		
 	}
+	
+	
+	
+
 }
