@@ -1,6 +1,7 @@
 package br.edu.ifpb.caju.controller;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import br.edu.ifpb.caju.model.Ata;
@@ -16,5 +17,8 @@ public interface SistemaInterface {
 	public Ata gerarAtaDeReuniao(Reuniao r);
 	public String gerarPautaDaReuniao(Reuniao r);
 	public void votarEmProcesso(Voto v, Processo p);
+	public void cadastraReuniao(LocalDate data);
+	public void cadastraMembro(String nome, String email, String telefone);
+	public void cadastraProcesso(String nome, String matricula, String periodo, Date data, String assunto);
 
 }

@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Colegiado {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -48,7 +49,6 @@ public class Colegiado {
 	}
 	
 	public String getDataFormatada(LocalDate data){
-		
 		DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		return data.format(formatador);
 	}
