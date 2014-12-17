@@ -3,7 +3,7 @@ package br.edu.ifpb.caju.view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -60,7 +60,7 @@ public class TelaCadastraReuniao extends JDialog {
 		contentPanel.add(lblAtributo);
 		
 		atributo = new JFormattedTextField(new MaskFormatter("##/##/####"));
-		atributo.setText(modelo.getDataAgenda().getDayOfYear()+"/"+modelo.getDataAgenda().getMonth()+"/"+modelo.getDataAgenda().getYear());
+		atributo.setText(modelo.getDataAgenda().toString());
 		atributo.setBounds(91, 30, 257, 20);
 		contentPanel.add(atributo);
 		atributo.setColumns(10);
@@ -133,12 +133,13 @@ public class TelaCadastraReuniao extends JDialog {
 	
 	private class CadastrarListener implements ActionListener{
 
+		@SuppressWarnings("deprecation")
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try{
 				Sistema sys = new Sistema();
 				String [] valores = atributo.getText().split("/");
-				sys.cadastraReuniao(LocalDate.of(Integer.parseInt(valores[2]), Integer.parseInt(valores[1]),Integer.parseInt(valores[0])));
+				sys.cadastraReuniao(new Date(Integer.parseInt(valores[2]), Integer.parseInt(valores[1]),Integer.parseInt(valores[0])));
 				JOptionPane.showMessageDialog(classe(), "Reunião Cadastrada com Sucesso!");
 				dispose();
 			}catch(Exception ex){

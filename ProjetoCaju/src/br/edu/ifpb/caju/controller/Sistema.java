@@ -1,9 +1,5 @@
 package br.edu.ifpb.caju.controller;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,6 +7,7 @@ import java.util.List;
 import br.edu.ifpb.caju.model.Ata;
 import br.edu.ifpb.caju.model.Colegiado;
 import br.edu.ifpb.caju.model.Membro;
+import br.edu.ifpb.caju.model.Presidente;
 import br.edu.ifpb.caju.model.Processo;
 import br.edu.ifpb.caju.model.Reuniao;
 import br.edu.ifpb.caju.model.Voto;
@@ -19,6 +16,8 @@ public class Sistema implements SistemaInterface{
 	
 	private static SistemaReuniao sr = new SistemaReuniao();
 	private static SistemaMembro sm = new SistemaMembro();
+	private static SistemaColegiado sc = new SistemaColegiado();
+	private static SistemaProcesso sp = new SistemaProcesso();
 
 	@Override
 	public void alocarProcessoAReunião(Processo p, Reuniao r) {
@@ -27,8 +26,8 @@ public class Sistema implements SistemaInterface{
 	}
 
 	@Override
-	public List<LocalDate> consultarAgendaDoColegiado(Colegiado c) {
-		List<LocalDate> datas = new ArrayList<LocalDate>();
+	public List<Date> consultarAgendaDoColegiado(Colegiado c) {
+		List<Date> datas = new ArrayList<Date>();
 		for (Reuniao r : c.getReunioes()) {
 			datas.add(r.getDataAgenda());
 		}
@@ -38,7 +37,7 @@ public class Sistema implements SistemaInterface{
 
 	@Override
 	public Ata gerarAtaDeReuniao(Reuniao r) {
-		//TODO Seguir modelo
+		//TODO Seguir Algum modelo de Ata
 		return null;
 	}
 
@@ -60,7 +59,7 @@ public class Sistema implements SistemaInterface{
 	}
 
 	@Override
-	public void cadastraReuniao(LocalDate data) {
+	public void cadastraReuniao(Date data) {
 		Reuniao reuniao = new Reuniao();
 		reuniao.setDataAgenda(data);
 		sr.cadastraReuniao(reuniao);
@@ -82,10 +81,31 @@ public class Sistema implements SistemaInterface{
 		processo.setNomeRequerente(nome);
 		processo.setMatRequerente(Integer.parseInt(matricula));
 		processo.setPeriodo(periodo);
-		Instant instant = Instant.ofEpochMilli(data.getTime());
-		LocalDate res = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
-		processo.setDataDoc(res);
+		processo.setDataDoc(data);
 		processo.setAssunto(assunto);
+		sp.cadastraProcesso(processo);
+		
+		
+	}
+
+	@Override
+	public void cadastrarPresidente(Membro membro, String login, String senha) {
+		Presidente p = new Presidente();
+		p.setNome(membro.getNome());
+		p.setEmail(membro.getEmail());
+		p.setTelefone(membro.getTelefone());
+		p.setAtivo(true);
+		p.setLogin(login);
+		p.setSenha(senha);
+		sm.cadastraMembro(p);
+		
+	}
+
+	@Override
+	public void cadastraColegiado(Date data) {
+		Colegiado c = new Colegiado();
+		c.setDataIni(data);
+		sc.cadastraColegiado(c);
 		
 	}
 

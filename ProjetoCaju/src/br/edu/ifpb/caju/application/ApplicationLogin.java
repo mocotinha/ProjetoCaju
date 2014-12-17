@@ -1,8 +1,11 @@
 package br.edu.ifpb.caju.application;
 
+import javax.swing.JOptionPane;
+
 import br.edu.ifpb.caju.controller.SistemaMembro;
 import br.edu.ifpb.caju.dao.DAO;
 import br.edu.ifpb.caju.model.Presidente;
+import br.edu.ifpb.caju.view.TelaMenu;
 /*
  * Apllication 1 - Cadastro e Login de Presidente de Colegiado
  */
@@ -17,16 +20,23 @@ public class ApplicationLogin {
 		p.setSenha(sm.criptografarSenha("123"));
 		
 //		Cadastro de Presidente - Usuarios Autenticados
-//		sm.cadastraMembro(p);
+		try{
+			sm.getMembroPorLogin("admin");
+		}catch(Exception e){
+			sm.cadastraMembro(p);
+		}
 		
-//		
+		
+	
 		DAO.open();
 		DAO.begin();
 		Presidente membro = sm.getMembroPorLogin("admin");
 		if(membro.getSenha().equals(sm.criptografarSenha("123"))){
-			System.out.println("Logado Com Sucesso!");
+			JOptionPane.showMessageDialog(null, "Logado com sucesso!");
+			TelaMenu tm = new TelaMenu();
+			tm.setVisible(true);
 		}else{
-			System.out.println("Login ou Senha Inválida");
+			JOptionPane.showMessageDialog(null, "Login ou Senha Inválidos");
 		}
 		DAO.close();
 		

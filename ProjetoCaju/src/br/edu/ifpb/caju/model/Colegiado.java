@@ -1,8 +1,7 @@
 package br.edu.ifpb.caju.model;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Colegiado {
@@ -18,8 +19,10 @@ public class Colegiado {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private LocalDate dataIni;
-	private LocalDate dataFim;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataIni;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataFim;
 	@ManyToMany
 	private List<Membro> membros = new ArrayList<Membro>();
 	private boolean ativo;
@@ -44,24 +47,21 @@ public class Colegiado {
 	}
 
 
-	public LocalDate getDataIni() {
+	public Date getDataIni() {
 		return dataIni;
 	}
 	
-	public String getDataFormatada(LocalDate data){
-		DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		return data.format(formatador);
-	}
 
-	public void setDataIni(LocalDate dataIni) {
+
+	public void setDataIni(Date dataIni) {
 		this.dataIni = dataIni;
 	}
 
-	public LocalDate getDataFim() {
+	public Date getDataFim() {
 		return dataFim;
 	}
 
-	public void setDataFim(LocalDate dataFim) {
+	public void setDataFim(Date dataFim) {
 		this.dataFim = dataFim;
 	}
 

@@ -44,26 +44,27 @@ public class TelaCadastroProcesso extends JDialog {
 	 * Create the dialog.
 	 */
 	public TelaCadastroProcesso() {
+		setTitle("Processo");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		
 		nomeField = new JTextField();
-		nomeField.setBounds(73, 57, 270, 20);
+		nomeField.setBounds(89, 57, 270, 20);
 		getContentPane().add(nomeField);
 		nomeField.setColumns(10);
 		
 		matriculaField = new JTextField();
-		matriculaField.setBounds(73, 88, 108, 20);
+		matriculaField.setBounds(88, 88, 108, 20);
 		getContentPane().add(matriculaField);
 		matriculaField.setColumns(10);
 		
 		periodoField = new JTextField();
-		periodoField.setBounds(73, 124, 108, 20);
+		periodoField.setBounds(88, 124, 108, 20);
 		getContentPane().add(periodoField);
 		periodoField.setColumns(10);
 		
 		assuntoField = new JTextField();
-		assuntoField.setBounds(73, 186, 270, 20);
+		assuntoField.setBounds(89, 186, 270, 20);
 		getContentPane().add(assuntoField);
 		assuntoField.setColumns(10);
 		
@@ -72,7 +73,7 @@ public class TelaCadastroProcesso extends JDialog {
 		getContentPane().add(lblNome);
 		
 		JLabel lblMatricula = new JLabel("Matricula");
-		lblMatricula.setBounds(17, 91, 46, 14);
+		lblMatricula.setBounds(17, 91, 61, 14);
 		getContentPane().add(lblMatricula);
 		
 		JLabel lblData = new JLabel("Periodo");
@@ -98,8 +99,12 @@ public class TelaCadastroProcesso extends JDialog {
 		getContentPane().add(btnCancelar);
 		
 		dateChooser = new JDateChooser();
-		dateChooser.setBounds(73, 155, 108, 20);
+		dateChooser.setBounds(88, 155, 108, 20);
 		getContentPane().add(dateChooser);
+		
+		JLabel lblMatriculaTemQue = new JLabel("*Matricula tem que ser em Inteiro");
+		lblMatriculaTemQue.setBounds(206, 91, 206, 14);
+		getContentPane().add(lblMatriculaTemQue);
 
 	}
 	private TelaCadastroProcesso classe(){

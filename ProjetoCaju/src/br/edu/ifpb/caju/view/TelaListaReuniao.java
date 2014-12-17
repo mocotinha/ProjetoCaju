@@ -14,7 +14,7 @@ import br.edu.ifpb.caju.model.table.ReuniaoTableModel;
 
 @SuppressWarnings("serial")
 public class TelaListaReuniao extends JDialog {
-	private SistemaReuniao sys;
+	private SistemaReuniao sys = new SistemaReuniao();
 	private JTextField textField;
 	private JTable table;
 

@@ -1,7 +1,7 @@
 package br.edu.ifpb.caju.model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,14 +13,18 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Reuniao {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private LocalDate dataAgenda;
-	private LocalDate dataReunicao;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataAgenda;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataReunicao;
 	@ManyToMany
 	private List<Membro> membrosPresentes = new ArrayList<Membro>();
 	private String pauta;
@@ -52,16 +56,16 @@ public class Reuniao {
 
 
 
-	public LocalDate getDataAgenda() {
+	public Date getDataAgenda() {
 		return dataAgenda;
 	}
-	public void setDataAgenda(LocalDate dataAgenda) {
+	public void setDataAgenda(Date dataAgenda) {
 		this.dataAgenda = dataAgenda;
 	}
-	public LocalDate getDataReunicao() {
+	public Date getDataReunicao() {
 		return dataReunicao;
 	}
-	public void setDataReunicao(LocalDate dataReunicao) {
+	public void setDataReunicao(Date dataReunicao) {
 		this.dataReunicao = dataReunicao;
 	}
 
