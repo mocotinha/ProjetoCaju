@@ -61,7 +61,7 @@ public class TelaCadastraColegiado extends JDialog{
 		lbldataIni.setBounds(32, 33, 71, 14);
 		contentPanel.add(lbldataIni);
 		
-		dataIni = new JTextField(this.colegiado.getDataIni());
+		dataIni = new JTextField();//this.colegiado.getDataIni()
 		dataIni.setBounds(91, 30, 257, 20);
 		contentPanel.add(dataIni);
 		dataIni.setColumns(10);
@@ -92,7 +92,7 @@ public class TelaCadastraColegiado extends JDialog{
 		lbldataIni.setBounds(32, 33, 71, 14);
 		contentPanel.add(lbldataIni);
 		
-		dataIni = new JTextField(this.colegiado.getDataIni());
+		dataIni = new JTextField();//this.colegiado.getDataIni()
 		dataIni.setBounds(91, 30, 257, 20);
 		contentPanel.add(dataIni);
 		dataIni.setColumns(10);
@@ -119,9 +119,9 @@ public class TelaCadastraColegiado extends JDialog{
 		public void actionPerformed(ActionEvent e) {
 			try{
 				SistemaColegiado sys = new SistemaColegiado(); //verificar tipos
-				colegiado.setDataIni(dataIni.getText());
+			/*	colegiado.setDataIni(dataIni.getText());
 				colegiado.setDataFim(dataFim.getText());
-				colegiado.setAtivo(ativo.getText());
+				colegiado.setAtivo(ativo.getText());*/
 				sys.editaColegiado(colegiado);
 				JOptionPane.showMessageDialog(classe(), "Colegiado Atualizado com Sucesso!");
 				dispose();
@@ -139,7 +139,7 @@ public class TelaCadastraColegiado extends JDialog{
 		public void actionPerformed(ActionEvent e) {
 			try{
 				SistemaColegiado sys = new SistemaColegiado();
-				sys.cadastraColegiado(dataIni.getText(),dataFim.getText(),ativo.getText());
+//				sys.cadastraColegiado(dataIni.getText(),dataFim.getText(),ativo.getText());
 				JOptionPane.showMessageDialog(classe(), "Colegiado Cadastrado com Sucesso!");
 				dispose();
 			}catch(Exception ex){
