@@ -4,35 +4,45 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Ata {
+public class Voto {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	private String decisao;
 	private String texto;
 	@OneToOne
-	private Reuniao reuniao;
+	private Processo processo;
+	@ManyToOne
+	private Membro membro;
+	
+	public Voto(){}
 	
 	
-	public Ata(){}
-	
-
-	public Reuniao getReuniao() {
-		return reuniao;
-	}
-
-	public void setReuniao(Reuniao reuniao) {
-		this.reuniao = reuniao;
+	public Processo getProcesso() {
+		return processo;
 	}
 
 
+	public void setProcesso(Processo processo) {
+		this.processo = processo;
+	}
 
 
-
-	public Ata(String texto){
+	public Voto(String decicao,String texto){
+		this.decisao = decicao;
 		this.texto = texto;
+	}
+
+	public String getDecisao() {
+		return decisao;
+	}
+
+	public void setDecisao(String decisao) {
+		this.decisao = decisao;
 	}
 
 	public String getTexto() {
@@ -50,7 +60,6 @@ public class Ata {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
 	
 	
 }

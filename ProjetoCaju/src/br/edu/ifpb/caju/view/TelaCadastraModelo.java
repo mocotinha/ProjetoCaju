@@ -39,7 +39,7 @@ public class TelaCadastraModelo extends JDialog {
 	 * Create the dialog.
 	 */
 	
-	public TelaCadastraModelo(TelaMenuModelo tela,Modelo modelo){
+	public TelaCadastraModelo(TelaMenu tela,Modelo modelo){
 		super(tela,"Cadastro de Modelo",true);
 		this.modelo = modelo;
 		setBounds(100, 100, 450, 300);

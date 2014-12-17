@@ -23,7 +23,7 @@ public class TelaListaColegiado extends JDialog{
 	private JTextField textField;
 	private JTable table;
 	private SistemaColegiado sys = new SistemaColegiado();
-	private TelaMenuColegiado tela;
+	private TelaMenu tela;
 	
 	/**
 	 * Launch the application.
@@ -43,7 +43,7 @@ public class TelaListaColegiado extends JDialog{
 	 * Create the dialog.
 	 **/
 	
-	public TelaListaColegiado(TelaMenuColegiado tela) {
+	public TelaListaColegiado(TelaMenu tela) {
 		super(tela,"Lista Colegiados",true);
 		this.tela = tela;
 		setBounds(100, 100, 450, 300);
@@ -90,7 +90,7 @@ public class TelaListaColegiado extends JDialog{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			table.setModel(new ColegiadoTableModel(sys.getColegiadoPorAtributo(textField.getText())));
+//			table.setModel(new ColegiadoTableModel(sys.getColegiadoPorAtributo(textField.getText())));
 			
 		}
 		

@@ -1,26 +1,25 @@
 package br.edu.ifpb.caju.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import br.edu.ifpb.caju.dao.DAO;
 import br.edu.ifpb.caju.dao.DAOColegiado;
-import br.edu.ifpb.caju.dao.DAOModelo;
 import br.edu.ifpb.caju.model.Colegiado;
 
 
 public class SistemaColegiado implements SistemaColegiadoInterface {
 
+	private DAOColegiado dao;
+	
+	public SistemaColegiado() {
+		this.dao = new DAOColegiado();
+	}
+	
 	@Override
-	public void cadastraColegiado(Date dataIni, Date dataFim, boolean ativo) {
-		Colegiado colegiado = new Colegiado();
-		colegiado.setDataIni(dataIni);
-		colegiado.setDataFim(dataFim);
-		colegiado.setAtivo(ativo);
-		DAOColegiado dao = new DAOColegiado();
+	public void cadastraColegiado(Colegiado colegiado) {
 		DAO.open();
 		DAO.begin();
-		dao.persist(colegiado);
+		this.dao.persist(colegiado);
 		DAO.commit();
 		DAO.close();
 		
@@ -28,13 +27,10 @@ public class SistemaColegiado implements SistemaColegiadoInterface {
 
 	@Override
 	public void removeColegiado(Colegiado colegiado) {
-		DAOColegiado dao = new DAOColegiado();
+		colegiado.setAtivo(false);
 		DAO.open();
 		DAO.begin();
-		// não pode remover
-		//dao.remove(colegiado);
-		colegiado.setAtivo(false);
-		dao.persist(colegiado);
+		this.dao.merge(colegiado);
 		DAO.commit();
 		DAO.close();
 		
@@ -42,10 +38,10 @@ public class SistemaColegiado implements SistemaColegiadoInterface {
 
 	@Override
 	public void editaColegiado(Colegiado colegiado) {
-		DAOColegiado dao = new DAOColegiado();
+	
 		DAO.open();
 		DAO.begin();
-		dao.merge(colegiado);
+		this.dao.merge(colegiado);
 		DAO.commit();
 		DAO.close();
 		
@@ -53,27 +49,16 @@ public class SistemaColegiado implements SistemaColegiadoInterface {
 
 	@Override
 	public List<Colegiado> getAllColegiado() {
-		List<Colegiado> colegiados;
-		DAOColegiado dao = new DAOColegiado();
+
 		DAO.open();
 		DAO.begin();
-		colegiados = dao.findAll();
+		List<Colegiado> colegiados = this.dao.findAll();
 		DAO.commit();
 		DAO.close();
 		return colegiados;
 	}
 
-	@Override
-	public List<Colegiado> getColegiadoPorAtributo(String text) {
-		List<Colegiado> colegiados;
-		DAOColegiado dao = new DAOColegiado();
-		DAO.open();
-		DAO.begin();
-		colegiados = dao.findByAtribute(text);
-		DAO.commit();
-		DAO.close();
-		return colegiados;
-	}
+
 
 	
 

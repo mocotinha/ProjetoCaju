@@ -13,7 +13,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import br.edu.ifpb.caju.controller.SistemaColegiado;
-
 import br.edu.ifpb.caju.model.Colegiado;
 
 
@@ -45,7 +44,7 @@ public class TelaCadastraColegiado extends JDialog{
 	 * Create the dialog.
 	 **/
 	
-	public TelaCadastraColegiado(TelaMenuColegiado tela,Colegiado colegiado){//verificar tipos
+	public TelaCadastraColegiado(TelaMenu tela,Colegiado colegiado){//verificar tipos
 		super(tela,"Cadastro de Colegiado",true);
 		this.colegiado = colegiado;
 		setBounds(100, 100, 450, 300);

@@ -8,34 +8,37 @@ import br.edu.ifpb.caju.model.Ata;
 
 public class SistemaAta implements SistemaAtaInterface {
 
+	private DAOAta dao;
+	
+	public SistemaAta() {
+		this.dao = new DAOAta();
+	}
 	@Override
-	public void cadastraAta(String text) {
-		Ata ata = new Ata();
-		ata.setTexto(text);
-		DAOAta dao = new DAOAta();
+	public void cadastraAta(Ata ata) {
+		
 		DAO.open();
 		DAO.begin();
-		dao.persist(ata);
+		this.dao.persist(ata);
 		DAO.commit();
 		DAO.close();
 	}
 
 	@Override
 	public void removeAta(Ata ata) {
-		DAOAta dao = new DAOAta();
+	
 		DAO.open();
 		DAO.begin();
-		dao.remove(ata);
+		this.dao.remove(ata);
 		DAO.commit();
 		DAO.close();
 	}
 
 	@Override
 	public void editaAta(Ata ata) {
-		DAOAta dao = new DAOAta();
+		
 		DAO.open();
 		DAO.begin();
-		dao.merge(ata);
+		this.dao.merge(ata);
 		DAO.commit();
 		DAO.close();
 	}
@@ -43,25 +46,14 @@ public class SistemaAta implements SistemaAtaInterface {
 	@Override
 	public List<Ata> getAllAta() {
 		List<Ata> ata;
-		DAOAta dao = new DAOAta();
 		DAO.open();
 		DAO.begin();
-		ata = dao.findAll();
+		ata = this.dao.findAll();
 		DAO.commit();
 		DAO.close();
 		return ata;
 	}
 
-	@Override
-	public List<Ata> getAtaPorAtributo(String text) {
-		List<Ata> ata;
-		DAOAta dao = new DAOAta();
-		DAO.open();
-		DAO.begin();
-		ata = dao.findByAtribute(text);
-		DAO.commit();
-		DAO.close();
-		return ata;
-	}
+
 
 }

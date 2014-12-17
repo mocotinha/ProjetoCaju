@@ -23,7 +23,7 @@ public class TelaListaModelo extends JDialog {
 	private JTextField textField;
 	private JTable table;
 	private SistemaModelo sys = new SistemaModelo();
-	private TelaMenuModelo tela;
+	private TelaMenu tela;
 
 	/**
 	 * Launch the application.
@@ -41,7 +41,7 @@ public class TelaListaModelo extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public TelaListaModelo(TelaMenuModelo tela) {
+	public TelaListaModelo(TelaMenu tela) {
 		super(tela,"Lista Modelos",true);
 		this.tela = tela;
 		setBounds(100, 100, 450, 300);

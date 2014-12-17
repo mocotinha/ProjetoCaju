@@ -8,6 +8,7 @@ import javax.swing.table.AbstractTableModel;
 import br.edu.ifpb.caju.model.Ata;
 
 
+@SuppressWarnings("serial")
 public class AtaTableModel extends AbstractTableModel {
 
 	private static final int COL_ID = 0;
@@ -34,7 +35,7 @@ public class AtaTableModel extends AbstractTableModel {
 
 		Ata valor = ata.get(row);
 		if (column == COL_TEXTO) return valor.getTexto();
-		
+		if (column == COL_ID) return valor.getId();
 		
 		return "";  
 	}

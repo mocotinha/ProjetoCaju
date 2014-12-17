@@ -15,7 +15,6 @@ import javax.swing.border.EmptyBorder;
 
 import br.edu.ifpb.caju.controller.SistemaAta;
 import br.edu.ifpb.caju.model.table.AtaTableModel;
-import br.edu.ifpb.caju.model.table.ColegiadoTableModel;
 
 public class TelaListaAta extends JDialog {
 	
@@ -23,7 +22,7 @@ public class TelaListaAta extends JDialog {
 	private JTextField textField;
 	private JTable table;
 	private SistemaAta sys = new SistemaAta();
-	private TelaMenuAta tela;
+	private TelaMenu tela;
 	
 	/**
 	 * Launch the application.
@@ -39,7 +38,7 @@ public class TelaListaAta extends JDialog {
 		}
 	}
 	
-	public TelaListaAta(TelaMenuAta tela) {
+	public TelaListaAta(TelaMenu tela) {
 		super(tela,"Lista Ata",true);
 		this.tela = tela;
 		setBounds(100, 100, 450, 300);
@@ -86,7 +85,7 @@ public class TelaListaAta extends JDialog {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			table.setModel(new AtaTableModel(sys.getAtaPorAtributo(textField.getText())));
+//			table.setModel(new AtaTableModel(sys.getAtaPorAtributo(textField.getText())));
 			
 		}
 		

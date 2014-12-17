@@ -39,7 +39,7 @@ public class TelaCadastraAta extends JDialog{
 	 * Create the dialog.
 	 **/
 	
-	public TelaCadastraAta(TelaMenuAta tela,Ata ata){//verificar tipos
+	public TelaCadastraAta(TelaMenu tela,Ata ata){//verificar tipos
 		super(tela,"Cadastro de Ata",true);
 		this.ata = ata;
 		setBounds(100, 100, 450, 300);
