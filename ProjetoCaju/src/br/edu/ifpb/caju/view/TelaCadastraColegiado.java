@@ -9,22 +9,22 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import br.edu.ifpb.caju.controller.SistemaColegiado;
+import br.edu.ifpb.caju.controller.Sistema;
 import br.edu.ifpb.caju.model.Colegiado;
+
+import com.toedter.calendar.JDateChooser;
 
 
 
 @SuppressWarnings("serial")
 public class TelaCadastraColegiado extends JDialog{
-	
+	private Sistema sys = new Sistema();
 	private final JPanel contentPanel = new JPanel();
-	private JTextField dataIni;
-	private JTextField dataFim;
-	private JTextField ativo;
+	@SuppressWarnings("unused")
 	private Colegiado colegiado;
+	private JDateChooser dateChooser;
 	
 	/**
 	 * Launch the application.
@@ -42,6 +42,7 @@ public class TelaCadastraColegiado extends JDialog{
 	
 	/**
 	 * Create the dialog.
+	 * @wbp.parser.constructor
 	 **/
 	
 	public TelaCadastraColegiado(TelaMenu tela,Colegiado colegiado){//verificar tipos
@@ -56,17 +57,12 @@ public class TelaCadastraColegiado extends JDialog{
 		
 		//Falta ver os outros atributos
 		//--
-		JLabel lbldataIni = new JLabel("DataIni:");
-		lbldataIni.setBounds(32, 33, 71, 14);
+		JLabel lbldataIni = new JLabel("DataInicio:");
+		lbldataIni.setBounds(143, 90, 71, 14);
 		contentPanel.add(lbldataIni);
-		
-		dataIni = new JTextField();//this.colegiado.getDataIni()
-		dataIni.setBounds(91, 30, 257, 20);
-		contentPanel.add(dataIni);
-		dataIni.setColumns(10);
 		//---
 		JButton btnCadastrar = new JButton("Atualizar");
-		btnCadastrar.setBounds(24, 225, 98, 26);
+		btnCadastrar.setBounds(143, 225, 98, 26);
 		btnCadastrar.addActionListener(new AtualizarListener());
 		contentPanel.add(btnCadastrar);
 		
@@ -74,6 +70,14 @@ public class TelaCadastraColegiado extends JDialog{
 		btnConcluir.setBounds(277, 225, 98, 26);
 		btnConcluir.addActionListener(new ConcluidoListener());
 		contentPanel.add(btnConcluir);
+		
+		dateChooser = new JDateChooser();
+		dateChooser.getCalendarButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		dateChooser.setBounds(201, 84, 87, 20);
+		contentPanel.add(dateChooser);
 	}
 	
 	public TelaCadastraColegiado(JFrame tela) { //verificar tipos
@@ -86,18 +90,13 @@ public class TelaCadastraColegiado extends JDialog{
 		contentPanel.setLayout(null);
 		
 		//Falta ver os outros atributos
-		
-		JLabel lbldataIni = new JLabel("DataIni:");
-		lbldataIni.setBounds(32, 33, 71, 14);
+		//--
+		JLabel lbldataIni = new JLabel("DataInicio:");
+		lbldataIni.setBounds(143, 90, 71, 14);
 		contentPanel.add(lbldataIni);
-		
-		dataIni = new JTextField();//this.colegiado.getDataIni()
-		dataIni.setBounds(91, 30, 257, 20);
-		contentPanel.add(dataIni);
-		dataIni.setColumns(10);
-		
+		//---
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(24, 225, 98, 26);
+		btnCadastrar.setBounds(143, 225, 98, 26);
 		btnCadastrar.addActionListener(new CadastrarListener());
 		contentPanel.add(btnCadastrar);
 		
@@ -105,6 +104,14 @@ public class TelaCadastraColegiado extends JDialog{
 		btnConcluir.setBounds(277, 225, 98, 26);
 		btnConcluir.addActionListener(new ConcluidoListener());
 		contentPanel.add(btnConcluir);
+		
+		dateChooser = new JDateChooser();
+		dateChooser.getCalendarButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		dateChooser.setBounds(201, 84, 87, 20);
+		contentPanel.add(dateChooser);
 		
 	}
 	
@@ -117,15 +124,15 @@ public class TelaCadastraColegiado extends JDialog{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try{
-				SistemaColegiado sys = new SistemaColegiado(); //verificar tipos
+//				SistemaColegiado sys = new SistemaColegiado(); //verificar tipos
 			/*	colegiado.setDataIni(dataIni.getText());
 				colegiado.setDataFim(dataFim.getText());
 				colegiado.setAtivo(ativo.getText());*/
-				sys.editaColegiado(colegiado);
-				JOptionPane.showMessageDialog(classe(), "Colegiado Atualizado com Sucesso!");
-				dispose();
+//				sys.editaColegiado(colegiado);
+//				JOptionPane.showMessageDialog(classe(), "Colegiado Atualizado com Sucesso!");
+//				dispose();
 			}catch(Exception ex){
-				JOptionPane.showMessageDialog(classe(), "Erro ao Atualizar o Colegiado!");
+//				JOptionPane.showMessageDialog(classe(), "Erro ao Atualizar o Colegiado!");
 			}
 			
 		}
@@ -137,8 +144,8 @@ public class TelaCadastraColegiado extends JDialog{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try{
-				SistemaColegiado sys = new SistemaColegiado();
-//				sys.cadastraColegiado(dataIni.getText(),dataFim.getText(),ativo.getText());
+//				
+				sys.cadastraColegiado(dateChooser.getDate());
 				JOptionPane.showMessageDialog(classe(), "Colegiado Cadastrado com Sucesso!");
 				dispose();
 			}catch(Exception ex){
@@ -157,8 +164,4 @@ public class TelaCadastraColegiado extends JDialog{
 		}
 		
 	}
-	
-	
-	
-
 }

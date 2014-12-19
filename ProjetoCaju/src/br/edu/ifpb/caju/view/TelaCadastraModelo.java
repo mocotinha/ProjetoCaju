@@ -27,7 +27,7 @@ public class TelaCadastraModelo extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			TelaCadastraModelo dialog = new TelaCadastraModelo(null);
+			TelaCadastraReuniao dialog = new TelaCadastraReuniao(null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -37,6 +37,7 @@ public class TelaCadastraModelo extends JDialog {
 
 	/**
 	 * Create the dialog.
+	 * @wbp.parser.constructor
 	 */
 	
 	public TelaCadastraModelo(TelaMenu tela,Modelo modelo){

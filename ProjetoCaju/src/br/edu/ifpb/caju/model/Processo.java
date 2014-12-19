@@ -1,6 +1,6 @@
 package br.edu.ifpb.caju.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Processo {
@@ -17,7 +19,8 @@ public class Processo {
 	private int idProcesso;
 	private int matRequerente;
 	private String nomeRequerente;
-	private LocalDate dataDoc;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataDoc;
 	private String assunto;
 	private String periodo;
 	@ManyToOne
@@ -91,11 +94,11 @@ public class Processo {
 		this.nomeRequerente = nomeRequerente;
 	}
 
-	public LocalDate getDataDoc() {
+	public Date getDataDoc() {
 		return dataDoc;
 	}
 
-	public void setDataDoc(LocalDate dataDoc) {
+	public void setDataDoc(Date dataDoc) {
 		this.dataDoc = dataDoc;
 	}
 
